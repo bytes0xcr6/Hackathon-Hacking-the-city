@@ -12,12 +12,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  *  NOTE: This contract imports Ownable.sol
  */
 contract Holdings is Ownable {
-    // Modifier to check if the LockedPeriod is over.
-    modifier checkLockedPeriod() {
-        require(lockedPeriod < block.timestamp, "Lock in period is not over.");
-        _;
-    }
-
     uint private lockedPeriod = 365 days + block.timestamp; //Locked period for the funds (1 year)
     uint private counter; // Counter to increment +1 every year to track the funds gotten.
     // ID(Year) => total funds received that year. (1rs year the ID will be 0)
@@ -37,22 +31,24 @@ contract Holdings is Ownable {
     event fundsTransferred(uint amount, address indexed to);
 
     /**
-     * @dev This function will transfer funds to the most voted Artists choosen.
+     * @dev This function will transfer funds to the most voted Artists choosen,
+     * and if the remaining value stored in the contract is 0 it will set a new Locked period.
      * @param _amount: Total amount to transfer.
      * @param _to: Address to transfer the amount.
      */
-    function transferFunds(
-        uint _amount,
-        address _to
-    ) public onlyOwner checkLockedPeriod {
-       payable(_to).transfer(_amount);
+    function transferFunds(uint _amount, address _to) public onlyOwner {
+        require(lockedPeriod < block.timestamp, "Lock in period is not over.");
+        payable(_to).transfer(_amount);
+        if (address(this).balance == 0) {
+            setNewLockedPeriod();
+        }
         emit fundsTransferred(_amount, _to);
     }
 
     /**
      * @dev Setter for the lock in period, to lock in the funds for another year.
      */
-    function setNewLockedPeriod() public onlyOwner checkLockedPeriod {
+    function setNewLockedPeriod() private {
         lockedPeriod = 365 days + block.timestamp; // Set 1 more year to unlock the funds.
         counter++; //Increment counter, new year starts.
     }
