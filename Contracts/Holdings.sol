@@ -62,7 +62,7 @@ contract Holdings is Ownable {
 
     /**
      *@dev Getter for the total funds received that year.
-     *
+     *@param _year: Year we want the total funds gotten.
      */
      function checkFunds(uint _year) public view returns(uint){
         return holdingsYear[_year];
