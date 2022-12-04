@@ -1,10 +1,12 @@
+// With this Script we request NFTs URI, Holdings in the locked contract and remaining locked period.
+
 const { ethers } =  require("ethers");
 
 const NFTsAddress = "0x8247218edbe92F3e4c4298e166B1659DB56c2355";
 const HoldingsAddress ="0x873E97fdB6ddC8C7604c9b167e4210cCe0eF03D7";
 
 // Getting the blockchain provider
-const INFURA_API_KEY = "9e5c2704d7724b0c8e6b52dd176db03a";
+const INFURA_API_KEY = "<API-KEY>";
 const provider = new ethers.providers.JsonRpcProvider(
   `https://mainnet.infura.io/v3/${INFURA_API_KEY}`
 );
@@ -24,10 +26,10 @@ const NFTsContract = new ethers.Contract(NFTsAddress, NFTsABI, provider);
 
 const main = async() => {
 
-    let year = await getFullYear();
+    let year = new Date().getFullYear();
     // Getter for the total funds collected this year.
     const totalFunds = await HoldingsContract.checkFunds(year);
-    // Getter for the remainiing locked period to unlock the funds and transfer it to the most voted Artists
+    // Getter for the remaining locked period to unlock the funds and transfer it to the most voted Artists
     const remainingLockedPeriod = await HoldingsContract.remainingLockedPeriod();
     // Getter for the JSON of that NFT ID
     const URI1 = await NFTsContract.tokenURI(1);
