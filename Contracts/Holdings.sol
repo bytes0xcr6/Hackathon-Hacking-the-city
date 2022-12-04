@@ -13,8 +13,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  */
 contract Holdings is Ownable {
     uint private lockedPeriod = 365 days + block.timestamp; //Locked period for the funds (1 year)
-    uint private counter; // Counter to increment +1 every year to track the funds gotten.
-    // ID(Year) => total funds received that year. (1rs year the ID will be 0)
+    uint private counter = 2022; // Counter to increment +1 every year to track the funds gotten.
+    // ID(Year) => total funds received that year. (1rs year the ID will be 2022)
     mapping(uint => uint) holdingsYear; //Mapping to track the total found received per year.
 
     /**
@@ -59,6 +59,14 @@ contract Holdings is Ownable {
     function remainingLockedPeriod() public view returns (uint) {
         return lockedPeriod - block.timestamp;
     }
+
+    /**
+     *@dev Getter for the total funds received that year.
+     *
+     */
+     function checkFunds(uint _year) public view returns(uint){
+        return holdingsYear[_year];
+     }
 
     /**
      * @dev Payable function that allows the contract to receive funds.
