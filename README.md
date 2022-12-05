@@ -1,4 +1,6 @@
 # Hidden Art 🥇 Winning Hackathon project 🥇
+<img width="530" alt="Captura de pantalla 2022-12-05 190308" src="https://user-images.githubusercontent.com/102038261/205709591-8519a7c5-c545-4197-bb7e-90cd2fde892a.png">
+
 ## Social, Cultural and Economic Hackathon in Barcelona
 
 <strong>Hidden Art is a DApp created to help urban Artists to live under better conditions.</strong> This platform helps them to be more accessible and reach more people. Through Hidden Art, the users/clients can book public or exclusive experience (Workshops, a whole day with the artist, a coffe/beer time, etc) with their favourite artist, or even an artist they just met minutes ago...
