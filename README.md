@@ -38,6 +38,7 @@ Tourists, local citizens, street artists, local tourism industry stakeholders.
 * JavaScript
 * React
 * Vite
+
 We used as a build tool Vite because of its fast configuration and also because creating a development environment from the ground up allows to realize what dependencies and scripts the project will really require.
 
 ## NFTs & Smart contracts
@@ -46,4 +47,5 @@ We used as a build tool Vite because of its fast configuration and also because 
 * Hardhat
 * IPFS
 * Infura
+
 Although due time constraints, we did not create a full blockchain DApp we managed to create the Smart Contracts and be able to visualize the NFT's metadata.
