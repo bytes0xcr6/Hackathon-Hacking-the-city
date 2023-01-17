@@ -51,4 +51,5 @@ We used as a build tool Vite because of its fast configuration and also because 
 Although due time constraints, we did not create a full blockchain DApp we managed to create the Smart Contracts and be able to visualize the NFT's metadata.
 
 
-<a href="030752">More details about the Hackathon... </a>
+<a href="https://blog.explorins.com/soluciones-del-hackathon-hacking-the-city/">More details about the Hackathon... </a>
+ 
